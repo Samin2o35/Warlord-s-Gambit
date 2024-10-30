@@ -15,6 +15,7 @@ public class TerrainGenerator : MonoBehaviour
     public int mapWidth;
     public int mapHeight;
     public float scale = 0.1f;
+    public float spawnFrequency;
 
     void Start()
     {
@@ -75,7 +76,7 @@ public class TerrainGenerator : MonoBehaviour
                     waterTilemap.SetTile(new Vector3Int(x, y, 0), waterTile);
 
                     // Randomly place rocks in water
-                    if (Random.value < 0.05f)
+                    if (Random.value < spawnFrequency)
                     {
                         GameObject rockPrefab = rockPrefabs[Random.Range(0, rockPrefabs.Length)];
                         Instantiate(rockPrefab, new Vector3(x + 0.5f, y + 0.5f, 0), Quaternion.identity);
