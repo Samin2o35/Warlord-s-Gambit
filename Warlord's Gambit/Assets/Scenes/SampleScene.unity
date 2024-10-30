@@ -492,11 +492,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseTilemap: {fileID: 1310180264}
   decorationTilemap: {fileID: 440202540}
-  waterTile: {fileID: 0}
-  grassTile: {fileID: 11400000, guid: 6974de3d61558d64ea684a360f1acb9a, type: 2}
-  hillTile: {fileID: 0}
+  waterTile: {fileID: 11400000, guid: 4e31a20fb4d23a64a9cd18a8b530b940, type: 2}
+  grassTile: {fileID: 11400000, guid: f69ff117e5adc1f40a9d670df82f6f52, type: 2}
+  hillTile: {fileID: 11400000, guid: 4f3791b43637f1345b27a4cf926687a3, type: 2}
   foamTile: {fileID: 0}
-  rockTiles: []
+  rockTiles:
+  - {fileID: 0}
   mapWidth: 100
   mapHeight: 100
   noiseScale: 0.1

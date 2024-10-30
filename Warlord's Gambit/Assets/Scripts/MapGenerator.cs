@@ -10,12 +10,15 @@ public class MapGenerator : MonoBehaviour
     public TileBase waterTile;
     public TileBase grassTile;
     public TileBase hillTile;
-    public TileBase foamTile;
-    public TileBase[] rockTiles; // Array of different rock tiles for variation
 
+    // Map setup
     public int mapWidth = 100;
     public int mapHeight = 100;
     public float noiseScale = 0.1f;
+
+    // Animated decorations
+    public GameObject foamPrefab;
+    public GameObject[] rockPrefabs;
 
     void Start()
     {
@@ -39,8 +42,8 @@ public class MapGenerator : MonoBehaviour
                     // Randomly place rocks in water
                     if (Random.value < 0.1f)
                     {
-                        TileBase rockTile = rockTiles[Random.Range(0, rockTiles.Length)];
-                        decorationTilemap.SetTile(new Vector3Int(x, y, 0), rockTile);
+                        GameObject rockPrefab = rockPrefabs[Random.Range(0, rockPrefabs.Length)];
+                        Instantiate(rockPrefab, new Vector3(x, y, 0), Quaternion.identity);
                     }
                 }
                 else if (noiseValue < 0.6f)
@@ -78,7 +81,7 @@ public class MapGenerator : MonoBehaviour
 
             if (hasLandNeighbor)
             {
-                decorationTilemap.SetTile(new Vector3Int(x, y, 0), foamTile);
+                Instantiate(foamPrefab, new Vector3(x, y, 0), Quaternion.identity);
             }
         }
     }
