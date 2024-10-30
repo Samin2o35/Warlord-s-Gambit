@@ -3,12 +3,15 @@ using UnityEngine.Tilemaps;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    public Tilemap tilemap;
+    public Tilemap waterTilemap, beachTilemap;
     public TileBase beachCenter;
     public TileBase beachTopEdge, beachBottomEdge, beachLeftEdge, beachRightEdge;
     public TileBase beachTopLeftCorner, beachTopRightCorner, beachBottomLeftCorner, beachBottomRightCorner;
-    
+
+    public GameObject foamPrefab;
+    public GameObject[] rockPrefabs; // Array for rock prefabs
     public TileBase waterTile;
+
     public int mapWidth;
     public int mapHeight;
     public float scale = 0.1f;
@@ -56,11 +59,27 @@ public class TerrainGenerator : MonoBehaviour
                     else if (!left) tileToPlace = beachLeftEdge;
                     else if (!right) tileToPlace = beachRightEdge;
 
-                    tilemap.SetTile(new Vector3Int(x, y, 0), tileToPlace);
+                    beachTilemap.SetTile(new Vector3Int(x, y, 0), tileToPlace);
+
+                    // Check for neighboring water tiles to spawn foam
+                    if (!top || !bottom || !left || !right)
+                    {
+                        Vector3Int tilePosition = new Vector3Int(x, y, 0);
+                        Vector3 foamPosition = beachTilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0); // Center foam sprite on tile
+                        //Instantiate(foamPrefab, foamPosition, Quaternion.identity, tilemap.transform);
+                        Instantiate(foamPrefab, foamPosition, Quaternion.identity);
+                    }
                 }
                 else
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 0), waterTile);
+                    waterTilemap.SetTile(new Vector3Int(x, y, 0), waterTile);
+
+                    // Randomly place rocks in water
+                    if (Random.value < 0.05f)
+                    {
+                        GameObject rockPrefab = rockPrefabs[Random.Range(0, rockPrefabs.Length)];
+                        Instantiate(rockPrefab, new Vector3(x + 0.5f, y + 0.5f, 0), Quaternion.identity);
+                    }
                 }
             }
         }

@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: 
+  - name: Water
     uniqueID: 2801050669
+    locked: 0
+  - name: Beach
+    uniqueID: 2605179701
     locked: 0
