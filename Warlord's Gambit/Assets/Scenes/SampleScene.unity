@@ -612,7 +612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterTilemap: {fileID: 955831374}
   beachTilemap: {fileID: 658713528}
-  shadowTilemap: {fileID: 0}
+  shadowTilemap: {fileID: 1303757491}
   beachCenter: {fileID: 11400000, guid: 5a0e341350f8cf94ea8efe30013ad285, type: 2}
   shadowTile: {fileID: 11400000, guid: 05d6172a416eba34aa5ff84afc1c6c07, type: 2}
   beachTopEdge: {fileID: 11400000, guid: f6d82634511257146a126600383b8f23, type: 2}
@@ -634,7 +634,8 @@ MonoBehaviour:
   mapHeight: 50
   scale: 0.08
   rockSpawnFrequency: 0.1
-  shadowSpawnFrequency: 0.2
+  clusterProbability: 45
+  smoothingIterations: 5
 --- !u!4 &1030069699
 Transform:
   m_ObjectHideFlags: 0
