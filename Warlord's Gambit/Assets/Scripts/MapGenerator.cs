@@ -3,12 +3,10 @@ using UnityEngine.Tilemaps;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    public Tilemap waterTilemap, beachTilemap, hillTilemap;
-    public TileBase beachCenter, hillCenter;
+    public Tilemap waterTilemap, beachTilemap, shadowTilemap;
+    public TileBase beachCenter, shadowTile; 
     public TileBase beachTopEdge, beachBottomEdge, beachLeftEdge, beachRightEdge;
     public TileBase beachTopLeftCorner, beachTopRightCorner, beachBottomLeftCorner, beachBottomRightCorner;
-    public TileBase hillTopEdge, hillBottomEdge, hillLeftEdge, hillRightEdge;
-    public TileBase hillTopLeftCorner, hillTopRightCorner, hillBottomLeftCorner, hillBottomRightCorner;
 
     public GameObject foamPrefab;
     public GameObject[] rockPrefabs; // Array for rock prefabs
@@ -18,7 +16,7 @@ public class TerrainGenerator : MonoBehaviour
     public int mapHeight;
     public float scale = 0.1f;
     public float rockSpawnFrequency = 0.1f;
-    public float hillSpawnFrequency = 0.2f;
+    public float shadowSpawnFrequency = 0.2f;
 
     void Start()
     {
@@ -28,6 +26,7 @@ public class TerrainGenerator : MonoBehaviour
     void GenerateTerrain()
     {
         bool[,] terrainMap = new bool[mapWidth, mapHeight];
+        bool[,] shadowMap = new bool[mapWidth, mapHeight];
 
         // First, generate a noise-based terrain layout
         for (int x = 0; x < mapWidth; x++)
@@ -76,7 +75,7 @@ public class TerrainGenerator : MonoBehaviour
                 }
                 else
                 {
-                    waterTilemap.SetTile(new Vector3Int(x, y, 0), waterTile);
+                    waterTilemap.SetTile(tilePosition, waterTile);
 
                     // Randomly place rocks in water
                     if (Random.value < rockSpawnFrequency)
@@ -86,8 +85,14 @@ public class TerrainGenerator : MonoBehaviour
                     }
                 }
 
+                // Shadow tile placement from the shadowMap
+                if (shadowMap[x, y])
+                {
+                    shadowTilemap.SetTile(tilePosition, shadowTile);
+                }
+
                 // Hill Tile Logic (can be placed on both water and beach)
-                if (Random.value < hillSpawnFrequency)
+                /*if (Random.value < hillSpawnFrequency)
                 {
                     // Check surroundings to determine type of hill tile
                     bool top = y + 1 < mapHeight && terrainMap[x, y + 1];
@@ -107,7 +112,7 @@ public class TerrainGenerator : MonoBehaviour
                     else if (!right) hillTileToPlace = hillRightEdge;
 
                     hillTilemap.SetTile(tilePosition, hillTileToPlace);
-                }
+                }*/
             }
         }
     }
