@@ -3,8 +3,8 @@ using UnityEngine.Tilemaps;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    public Tilemap waterTilemap, beachTilemap, shadowTilemap;
-    public TileBase beachCenter, shadowTile; 
+    public Tilemap waterTilemap, beachTilemap;
+    public TileBase beachCenter;
     public TileBase beachTopEdge, beachBottomEdge, beachLeftEdge, beachRightEdge;
     public TileBase beachTopLeftCorner, beachTopRightCorner, beachBottomLeftCorner, beachBottomRightCorner;
 
@@ -12,13 +12,17 @@ public class TerrainGenerator : MonoBehaviour
     public GameObject[] rockPrefabs; // Array for rock prefabs
     public TileBase waterTile;
 
+    public TileBase hillCenter;
+    public TileBase hillTopEdge, hillBottomEdge, hillLeftEdge, hillRightEdge;
+    public TileBase hillTopLeftCorner, hillTopRightCorner, hillBottomLeftCorner, hillBottomRightCorner;
+    public TileBase cliffTile;
+
     public int mapWidth;
     public int mapHeight;
     public float scale = 0.1f;
-    public float rockSpawnFrequency = 0.1f;
+    public float rockSpawnFrequency;
 
-    public int clusterProbability = 45; // Chance of a cell being a shadow tile
-    public int smoothingIterations = 5; // Number of times to smooth for clustering
+    private bool[,] shadowMap;
 
     void Start()
     {
@@ -28,31 +32,16 @@ public class TerrainGenerator : MonoBehaviour
     void GenerateTerrain()
     {
         bool[,] terrainMap = new bool[mapWidth, mapHeight];
-        bool[,] shadowMap = new bool[mapWidth, mapHeight];
+        shadowMap = new bool[mapWidth, mapHeight];
 
-        // Generate a noise-based terrain layout for bach and water
+        // Generate a noise-based terrain layout
         for (int x = 0; x < mapWidth; x++)
         {
             for (int y = 0; y < mapHeight; y++)
             {
                 float perlinValue = Mathf.PerlinNoise(x * scale, y * scale);
-                terrainMap[x, y] = perlinValue > 0.5f; // True for  beach, False for water
+                terrainMap[x, y] = perlinValue > 0.5f; // True for beach, False for water
             }
-        }
-
-        // Generate a noise-based terrain layout for shadow
-        for (int x = 0; x < mapWidth; x++)
-        {
-            for (int y = 0; y < mapHeight; y++)
-            {
-                shadowMap[x, y] = Random.Range(0, 100) < clusterProbability;
-            }
-        }
-
-        // Step 3: Apply cellular automata to cluster shadow tiles
-        for (int i = 0; i < smoothingIterations; i++)
-        {
-            shadowMap = SmoothShadowMap(shadowMap);
         }
 
         // Place tiles based on terrain layout and surrounding tiles
@@ -64,7 +53,7 @@ public class TerrainGenerator : MonoBehaviour
 
                 if (terrainMap[x, y])
                 {
-                    // Check surroundings to determine the type of grass tile
+                    // Determine the type of beach tile based on surroundings
                     bool top = y + 1 < mapHeight && terrainMap[x, y + 1];
                     bool bottom = y - 1 >= 0 && terrainMap[x, y - 1];
                     bool left = x - 1 >= 0 && terrainMap[x - 1, y];
@@ -89,78 +78,72 @@ public class TerrainGenerator : MonoBehaviour
                         Vector3 foamPosition = beachTilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0); // Center foam sprite on tile
                         Instantiate(foamPrefab, foamPosition, Quaternion.identity);
                     }
+
+                    // Randomly designate some beach tiles as shadow tiles for future hill placement
+                    if (Random.value < 0.2f)
+                    {
+                        shadowMap[x, y] = true;
+                    }
                 }
                 else
                 {
                     waterTilemap.SetTile(tilePosition, waterTile);
 
-                    // Randomly place rocks in water only if the current tile is not a shadow tile
-                    if (!shadowMap[x, y] && Random.value < spawnFrequency)
+                    // Randomly place rocks in water, but not on shadow tiles
+                    if (!shadowMap[x, y] && Random.value < rockSpawnFrequency)
                     {
                         GameObject rockPrefab = rockPrefabs[Random.Range(0, rockPrefabs.Length)];
-                        Instantiate(rockPrefab, new Vector3(x + 0.5f, y + 0.5f, 0), Quaternion.identity);
+                        Vector3 rockPosition = waterTilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0);
+                        Instantiate(rockPrefab, rockPosition, Quaternion.identity);
                     }
-                }
-
-                // Shadow tile placement from the shadowMap
-                if (shadowMap[x, y])
-                {
-                    shadowTilemap.SetTile(tilePosition, shadowTile);
                 }
             }
         }
-    }
 
-    // Smooth shadowMap using cellular automata
-    bool[,] SmoothShadowMap(bool[,] shadowMap)
-    {
-        bool[,] newShadowMap = new bool[mapWidth, mapHeight];
-
+        // Hill Placement on Shadow Tiles
         for (int x = 0; x < mapWidth; x++)
         {
             for (int y = 0; y < mapHeight; y++)
             {
-                int neighborCount = CountNeighbors(shadowMap, x, y);
+                if (shadowMap[x, y])
+                {
+                    Vector3Int tilePosition = new Vector3Int(x, y, 0);
 
-                if (neighborCount > 4)
-                {
-                    newShadowMap[x, y] = true;
-                }
-                else if (neighborCount < 4)
-                {
-                    newShadowMap[x, y] = false;
-                }
-                else
-                {
-                    newShadowMap[x, y] = shadowMap[x, y];
+                    // Determine hill tile type based on neighbors
+                    bool top = y + 1 < mapHeight && shadowMap[x, y + 1];
+                    bool bottom = y - 1 >= 0 && shadowMap[x, y - 1];
+                    bool left = x - 1 >= 0 && shadowMap[x - 1, y];
+                    bool right = x + 1 < mapWidth && shadowMap[x + 1, y];
+
+                    TileBase hillTileToPlace = hillCenter;
+
+                    if (!top && !left) hillTileToPlace = hillTopLeftCorner;
+                    else if (!top && !right) hillTileToPlace = hillTopRightCorner;
+                    else if (!bottom && !left) hillTileToPlace = hillBottomLeftCorner;
+                    else if (!bottom && !right) hillTileToPlace = hillBottomRightCorner;
+                    else if (!top) hillTileToPlace = hillTopEdge;
+                    else if (!bottom) hillTileToPlace = hillBottomEdge;
+                    else if (!left) hillTileToPlace = hillLeftEdge;
+                    else if (!right) hillTileToPlace = hillRightEdge;
+
+                    beachTilemap.SetTile(tilePosition, hillTileToPlace);
+
+                    // Add cliff tiles below bottom edges and corners
+                    if (hillTileToPlace == hillBottomEdge || hillTileToPlace == hillBottomLeftCorner || hillTileToPlace == hillBottomRightCorner)
+                    {
+                        int cliffDepth = Random.Range(1, 3); // Randomize cliff height
+                        for (int cliffLevel = 1; cliffLevel <= cliffDepth; cliffLevel++)
+                        {
+                            Vector3Int cliffPosition = new Vector3Int(x, y - cliffLevel, 0);
+
+                            // Stop if out of bounds or another shadow tile is in the way
+                            if (cliffPosition.y < 0 || shadowMap[x, y - cliffLevel]) break;
+
+                            beachTilemap.SetTile(cliffPosition, cliffTile);
+                        }
+                    }
                 }
             }
         }
-
-        return newShadowMap;
-    }
-
-    // Count neighboring shadow tiles
-    int CountNeighbors(bool[,] shadowMap, int x, int y)
-    {
-        int count = 0;
-
-        for (int i = -1; i <= 1; i++)
-        {
-            for (int j = -1; j <= 1; j++)
-            {
-                int nx = x + i;
-                int ny = y + j;
-
-                if (i == 0 && j == 0) continue; // Skip self
-
-                if (nx >= 0 && nx < mapWidth && ny >= 0 && ny < mapHeight)
-                {
-                    if (shadowMap[nx, ny]) count++;
-                }
-            }
-        }
-
-        return count;
     }
 }
