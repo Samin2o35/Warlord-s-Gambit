@@ -3,10 +3,12 @@ using UnityEngine.Tilemaps;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    public Tilemap waterTilemap, beachTilemap;
-    public TileBase beachCenter;
+    public Tilemap waterTilemap, beachTilemap, hillTilemap;
+    public TileBase beachCenter, hillCenter;
     public TileBase beachTopEdge, beachBottomEdge, beachLeftEdge, beachRightEdge;
     public TileBase beachTopLeftCorner, beachTopRightCorner, beachBottomLeftCorner, beachBottomRightCorner;
+    public TileBase hillTopEdge, hillBottomEdge, hillLeftEdge, hillRightEdge;
+    public TileBase hillTopLeftCorner, hillTopRightCorner, hillBottomLeftCorner, hillBottomRightCorner;
 
     public GameObject foamPrefab;
     public GameObject[] rockPrefabs; // Array for rock prefabs
@@ -15,7 +17,8 @@ public class TerrainGenerator : MonoBehaviour
     public int mapWidth;
     public int mapHeight;
     public float scale = 0.1f;
-    public float spawnFrequency;
+    public float rockSpawnFrequency = 0.1f;
+    public float hillSpawnFrequency = 0.2f;
 
     void Start()
     {
@@ -41,6 +44,8 @@ public class TerrainGenerator : MonoBehaviour
         {
             for (int y = 0; y < mapHeight; y++)
             {
+                Vector3Int tilePosition = new Vector3Int(x, y, 0);
+
                 if (terrainMap[x, y])
                 {
                     // Check surroundings to determine the type of grass tile
@@ -60,14 +65,12 @@ public class TerrainGenerator : MonoBehaviour
                     else if (!left) tileToPlace = beachLeftEdge;
                     else if (!right) tileToPlace = beachRightEdge;
 
-                    beachTilemap.SetTile(new Vector3Int(x, y, 0), tileToPlace);
+                    beachTilemap.SetTile(tilePosition, tileToPlace);
 
                     // Check for neighboring water tiles to spawn foam
                     if (!top || !bottom || !left || !right)
                     {
-                        Vector3Int tilePosition = new Vector3Int(x, y, 0);
                         Vector3 foamPosition = beachTilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 0.5f, 0); // Center foam sprite on tile
-                        //Instantiate(foamPrefab, foamPosition, Quaternion.identity, tilemap.transform);
                         Instantiate(foamPrefab, foamPosition, Quaternion.identity);
                     }
                 }
@@ -76,11 +79,34 @@ public class TerrainGenerator : MonoBehaviour
                     waterTilemap.SetTile(new Vector3Int(x, y, 0), waterTile);
 
                     // Randomly place rocks in water
-                    if (Random.value < spawnFrequency)
+                    if (Random.value < rockSpawnFrequency)
                     {
                         GameObject rockPrefab = rockPrefabs[Random.Range(0, rockPrefabs.Length)];
                         Instantiate(rockPrefab, new Vector3(x + 0.5f, y + 0.5f, 0), Quaternion.identity);
                     }
+                }
+
+                // Hill Tile Logic (can be placed on both water and beach)
+                if (Random.value < hillSpawnFrequency)
+                {
+                    // Check surroundings to determine type of hill tile
+                    bool top = y + 1 < mapHeight && terrainMap[x, y + 1];
+                    bool bottom = y - 1 >= 0 && terrainMap[x, y - 1];
+                    bool left = x - 1 >= 0 && terrainMap[x - 1, y];
+                    bool right = x + 1 < mapWidth && terrainMap[x + 1, y];
+
+                    TileBase hillTileToPlace = hillCenter;
+
+                    if (!top && !left) hillTileToPlace = hillTopLeftCorner;
+                    else if (!top && !right) hillTileToPlace = hillTopRightCorner;
+                    else if (!bottom && !left) hillTileToPlace = hillBottomLeftCorner;
+                    else if (!bottom && !right) hillTileToPlace = hillBottomRightCorner;
+                    else if (!top) hillTileToPlace = hillTopEdge;
+                    else if (!bottom) hillTileToPlace = hillBottomEdge;
+                    else if (!left) hillTileToPlace = hillLeftEdge;
+                    else if (!right) hillTileToPlace = hillRightEdge;
+
+                    hillTilemap.SetTile(tilePosition, hillTileToPlace);
                 }
             }
         }

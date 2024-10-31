@@ -631,7 +631,7 @@ MonoBehaviour:
   mapWidth: 50
   mapHeight: 50
   scale: 0.08
-  spawnFrequency: 0.01
+  rockSpawnFrequency: 0.1
 --- !u!4 &1030069699
 Transform:
   m_ObjectHideFlags: 0
