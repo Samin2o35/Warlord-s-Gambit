@@ -41,15 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Water
+  - name: 
     uniqueID: 2801050669
-    locked: 0
-  - name: Beach
-    uniqueID: 2605179701
-    locked: 0
-  - name: Shadow
-    uniqueID: 2254846961
-    locked: 0
-  - name: Hill
-    uniqueID: 1950837693
     locked: 0
