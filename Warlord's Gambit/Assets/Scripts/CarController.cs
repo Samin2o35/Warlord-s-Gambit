@@ -104,6 +104,32 @@ public class CarController : MonoBehaviour
         carRb.velocity = forwardVelocity + rightVelocity * driftFactor;
     }
 
+    float GetLateralVelocity()
+    {
+        // return how fast car is moving sideways
+        return Vector2.Dot(transform.right, carRb.velocity);
+    }
+    
+    public bool isTireScreeching(out float lateralVelocity, out bool isBraking)
+    {
+        lateralVelocity = GetLateralVelocity();
+        isBraking = false;
+
+        // Tires screech if player is hitting brakes when moving forward
+        if(accelerationInput < 0 && velocityVsUp > 0)
+        {
+            isBraking = true;
+            return true;
+        }
+
+        // if alot of side movement then tires shuld be screeching
+        if(Mathf.Abs(GetLateralVelocity()) > 4.0f)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void SetInputVector(Vector2 inputVector)
     {
         steeringInput = inputVector.x;
