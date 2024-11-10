@@ -15,7 +15,7 @@ public class CarSfxHandler : MonoBehaviour
     float tireScreechPitch = 0.5f;
 
 
-    private void Awake()
+    void Awake()
     {
         carController = GetComponentInParent<CarController>();
     }
@@ -74,6 +74,22 @@ public class CarSfxHandler : MonoBehaviour
         else
         {
             tiresScreechingAudioSource.volume = Mathf.Lerp(tiresScreechingAudioSource.volume, 0, Time.deltaTime * 10);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // get relative velocity of collision
+        float relativeVelocity = collision.relativeVelocity.magnitude;
+
+        float volume = relativeVelocity * 0.1f;
+
+        carHitAudioSource.pitch = Random.Range(0.95f, 1.05f);
+        carHitAudioSource.volume = volume;
+
+        if (!carHitAudioSource.isPlaying)
+        {
+            carHitAudioSource.Play();
         }
     }
 }
