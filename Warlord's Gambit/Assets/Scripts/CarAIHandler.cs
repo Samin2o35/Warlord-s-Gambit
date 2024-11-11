@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CarAIHandler : MonoBehaviour
 {
@@ -12,19 +13,24 @@ public class CarAIHandler : MonoBehaviour
     // local variables
     Vector3 targetPosition = Vector3.zero;
     Transform targetTransform = null;
-    
+
+    // waypoints
+    WaypointNode currentWaypoint = null;
+    WaypointNode[] allWayPoints;
+
     // componenets
     CarController carController;
-    
+
     void Awake()
     {
         carController = GetComponent<CarController>();
+        allWayPoints = FindObjectsOfType<WaypointNode>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame and is frame dependent
@@ -32,16 +38,20 @@ public class CarAIHandler : MonoBehaviour
     {
         Vector2 inputVector = Vector2.zero;
 
-        switch(aiMode)
+        switch (aiMode)
         {
             case AIMode.followPlayer:
                 FollowPlayer();
+                break;
+
+            case AIMode.folllowWaypoints:
+                FollowWaypoints();
                 break;
         }
 
         inputVector.x = TurnTowardsPlayer();
         inputVector.y = 1.0f;
-        
+
         // do donuts
         //inputVector.x = 1.0f;
         //inputVector.y = 1.0f;
@@ -52,13 +62,37 @@ public class CarAIHandler : MonoBehaviour
 
     void FollowPlayer()
     {
-        if(targetTransform == null)
+        if (targetTransform == null)
         {
             targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
         }
-        if(targetTransform != null)
+        if (targetTransform != null)
         {
             targetPosition = targetTransform.position;
+        }
+    }
+    void FollowWaypoints()
+    {
+        // pick closest waypont if not set
+        if (currentWaypoint == null)
+        {
+            currentWaypoint = FindClosestWaypoint();
+        }
+
+        // set target on waypoint position
+        if (currentWaypoint != null)
+        {
+            targetPosition = currentWaypoint.transform.position;
+
+            // store how close we are to target
+            float distanceToWaypoint = (targetPosition - transform.position).magnitude;
+
+            // check if we are close enough to consider we have reached waypoint
+            if (distanceToWaypoint <= currentWaypoint.minDistanceToReachWaypoint)
+            {
+                // if close enough then follow next waypoint, choose random between multiple waypoints
+                currentWaypoint = currentWaypoint.nextWaypointNode[Random.Range(0, currentWaypoint.nextWaypointNode.Length)];
+            }
         }
     }
 
@@ -77,5 +111,15 @@ public class CarAIHandler : MonoBehaviour
         // clamp steering between 1 and -1
         steerAmount = Mathf.Clamp(steerAmount, -1.0f, 1.0f);
         return steerAmount;
+    }
+
+
+
+    // find closest waypoint to AI
+    WaypointNode FindClosestWaypoint()
+    {
+        return allWayPoints
+            .OrderBy(tag => Vector3.Distance(transform.position, tag.transform.position))
+            .FirstOrDefault();
     }
 }
