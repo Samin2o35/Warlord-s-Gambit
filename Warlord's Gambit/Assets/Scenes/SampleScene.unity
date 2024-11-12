@@ -1333,7 +1333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDistanceToReachWaypoint: 5
   nextWaypointNode:
-  - {fileID: 0}
+  - {fileID: 1874101841}
 --- !u!4 &389086306
 Transform:
   m_ObjectHideFlags: 0
@@ -1977,6 +1977,10 @@ PrefabInstance:
     - target: {fileID: 7435394718421528412, guid: 396eed2296b45624f83339cdf431f071, type: 3}
       propertyPath: m_TagString
       value: AI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872760935022111288, guid: 396eed2296b45624f83339cdf431f071, type: 3}
+      propertyPath: aiMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -50,11 +50,7 @@ public class CarAIHandler : MonoBehaviour
         }
 
         inputVector.x = TurnTowardsPlayer();
-        inputVector.y = 1.0f;
-
-        // do donuts
-        //inputVector.x = 1.0f;
-        //inputVector.y = 1.0f;
+        inputVector.y = ApplyThrottleOrBrake(inputVector.x);
 
         // send input to car controller
         carController.SetInputVector(inputVector);
@@ -113,7 +109,11 @@ public class CarAIHandler : MonoBehaviour
         return steerAmount;
     }
 
-
+    float ApplyThrottleOrBrake(float inputX)
+    {
+        // apply throttle based on car turn tendency i.e. sharp turn leads to less car speed
+        return 1.05f - Mathf.Abs(inputX) / 1.0f;
+    }
 
     // find closest waypoint to AI
     WaypointNode FindClosestWaypoint()
