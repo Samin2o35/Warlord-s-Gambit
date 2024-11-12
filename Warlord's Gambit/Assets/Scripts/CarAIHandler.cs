@@ -9,6 +9,7 @@ public class CarAIHandler : MonoBehaviour
 
     [Header("AI Settings")]
     public AIMode aiMode;
+    public float maxSpeed = 10;
 
     // local variables
     Vector3 targetPosition = Vector3.zero;
@@ -86,6 +87,15 @@ public class CarAIHandler : MonoBehaviour
             // check if we are close enough to consider we have reached waypoint
             if (distanceToWaypoint <= currentWaypoint.minDistanceToReachWaypoint)
             {
+                if(currentWaypoint.maxSpeed > 0)
+                {
+                    maxSpeed = currentWaypoint.maxSpeed;
+                }
+                else
+                {
+                    maxSpeed = 1000;
+                }
+                
                 // if close enough then follow next waypoint, choose random between multiple waypoints
                 currentWaypoint = currentWaypoint.nextWaypointNode[Random.Range(0, currentWaypoint.nextWaypointNode.Length)];
             }
@@ -111,6 +121,12 @@ public class CarAIHandler : MonoBehaviour
 
     float ApplyThrottleOrBrake(float inputX)
     {
+        // if too fast then don't accelerate
+        if(carController.GetVelocityMagnitude() > maxSpeed)
+        {
+            return 0;
+        }
+        
         // apply throttle based on car turn tendency i.e. sharp turn leads to less car speed
         return 1.05f - Mathf.Abs(inputX) / 1.0f;
     }

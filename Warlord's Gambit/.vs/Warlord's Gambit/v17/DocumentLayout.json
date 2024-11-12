@@ -44,9 +44,10 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\WaypointNode.cs",
               "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\WaypointNode.cs",
               "RelativeToolTip": "Assets\\Scripts\\WaypointNode.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-11T10:25:00.299Z"
+              "WhenOpened": "2024-11-11T10:25:00.299Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -56,7 +57,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\CarAIHandler.cs",
               "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\CarAIHandler.cs",
               "RelativeToolTip": "Assets\\Scripts\\CarAIHandler.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAjwHIAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAcwFAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-11T06:44:33.376Z",
               "EditorCaption": ""
