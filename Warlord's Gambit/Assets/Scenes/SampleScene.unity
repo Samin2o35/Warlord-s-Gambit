@@ -1427,7 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1212e5de5d6cd347afa2ec833007a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0
+  maxSpeed: 16
   minDistanceToReachWaypoint: 5
   nextWaypointNode:
   - {fileID: 1819462840}
@@ -2079,7 +2079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1212e5de5d6cd347afa2ec833007a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0
+  maxSpeed: 15
   minDistanceToReachWaypoint: 5
   nextWaypointNode:
   - {fileID: 1246839544}
@@ -2092,7 +2092,7 @@ Transform:
   m_GameObject: {fileID: 905921727}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27, y: 68, z: 0}
+  m_LocalPosition: {x: 27, y: 65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2271,7 +2271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1212e5de5d6cd347afa2ec833007a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0
+  maxSpeed: 16
   minDistanceToReachWaypoint: 5
   nextWaypointNode:
   - {fileID: 1557932224}
@@ -2284,7 +2284,7 @@ Transform:
   m_GameObject: {fileID: 1246839543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40, y: 50, z: 0}
+  m_LocalPosition: {x: 37, y: 50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2372,7 +2372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1212e5de5d6cd347afa2ec833007a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0
+  maxSpeed: 20
   minDistanceToReachWaypoint: 5
   nextWaypointNode:
   - {fileID: 1476127260}
@@ -2468,7 +2468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1212e5de5d6cd347afa2ec833007a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0
+  maxSpeed: 10
   minDistanceToReachWaypoint: 5
   nextWaypointNode:
   - {fileID: 905921728}
