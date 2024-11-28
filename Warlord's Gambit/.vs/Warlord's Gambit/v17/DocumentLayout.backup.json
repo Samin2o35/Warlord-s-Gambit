@@ -1,117 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\scripts\\caraihandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\caraihandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\waypointnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\waypointnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\carsfxhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\carsfxhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\wheelparticlehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wheelparticlehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\wheeltrailrendererhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wheeltrailrendererhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WaypointNode.cs",
-              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\WaypointNode.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\WaypointNode.cs",
-              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\WaypointNode.cs",
-              "RelativeToolTip": "Assets\\Scripts\\WaypointNode.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-11T10:25:00.299Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CarAIHandler.cs",
-              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\CarAIHandler.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\CarAIHandler.cs",
-              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\CarAIHandler.cs",
-              "RelativeToolTip": "Assets\\Scripts\\CarAIHandler.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAIA5wDQAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-11T06:44:33.376Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CarSfxHandler.cs",
-              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\CarSfxHandler.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\CarSfxHandler.cs",
-              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\CarSfxHandler.cs",
-              "RelativeToolTip": "Assets\\Scripts\\CarSfxHandler.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAIwFsAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T05:07:09.056Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "WheelParticleHandler.cs",
-              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\WheelParticleHandler.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\WheelParticleHandler.cs",
-              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\WheelParticleHandler.cs",
-              "RelativeToolTip": "Assets\\Scripts\\WheelParticleHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T05:14:02.303Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "WheelTrailRendererHandler.cs",
-              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\WheelTrailRendererHandler.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\WheelTrailRendererHandler.cs",
-              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\WheelTrailRendererHandler.cs",
-              "RelativeToolTip": "Assets\\Scripts\\WheelTrailRendererHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T09:19:44.81Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CarController.cs",
-              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\CarController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\CarController.cs",
-              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\CarController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\CarController.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAwIwAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T05:29:15.286Z"
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
