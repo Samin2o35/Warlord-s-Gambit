@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations;
 using System.Collections;
 
 public class PlayerStateMachine : MonoBehaviour
@@ -32,20 +33,17 @@ public class PlayerStateMachine : MonoBehaviour
     void Update()
     {
         HandleInput(); // Handles movement and attack input
-        UpdateState(); // Updates FSM states
+
+        if (!isAttacking) // Only handle state if not attacking
+        {
+            UpdateState(); // Updates FSM states
+        }
         AnimateState(); // Handles animation transitions
     }
 
     void FixedUpdate()
     {
-        if (currentState == PlayerState.Move)
-        {
-            rb.velocity = movement * moveSpeed; // Apply movement
-        }
-        else
-        {
-            rb.velocity = Vector2.zero; // Stop moving in non-move states
-        }
+        rb.velocity = movement * moveSpeed; // Apply movement
     }
 
     void HandleInput()
@@ -54,43 +52,42 @@ public class PlayerStateMachine : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         movement = movement.normalized;
+    }
 
-        // Change state based on move input recieved
+    void UpdateState()
+    {
         if (movement != Vector2.zero)
         {
             currentState = PlayerState.Move;
         }
-        else if (!isAttacking) 
+        else 
         {
             currentState = PlayerState.Idle;
         }
     }
 
-    void UpdateState()
-    {
-        
-    }
-
     void AnimateState()
     {
         // Set animator parameters based on the state
-        switch (currentState)
+        animator.SetBool("isMoving", movement != Vector2.zero && !isAttacking);
+        animator.SetBool("isAttacking", isAttacking);
+    }
+
+    public void OnAttackAnimationEnd()
+    {
+        isAttacking = false; // Allow state changes again
+
+        // Transition back to Idle or Move state based on movement
+        if (movement != Vector2.zero)
         {
-            case PlayerState.Idle:
-                animator.SetBool("isMoving", false);
-                animator.SetBool("isAttacking", false);
-                break;
-
-            case PlayerState.Move:
-                animator.SetBool("isMoving", true);
-                animator.SetBool("isAttacking", false);
-                break;
-
-            case PlayerState.Attack:
-                animator.SetBool("isMoving", false);
-                animator.SetBool("isAttacking", true);
-                break;
+            currentState = PlayerState.Move;
         }
+        else
+        {
+            currentState = PlayerState.Idle;
+        }
+
+        AnimateState();
     }
 
     IEnumerator AutoAttack()
@@ -99,19 +96,14 @@ public class PlayerStateMachine : MonoBehaviour
         {
             // Trigger attack
             isAttacking = true;
-            currentState = PlayerState.Attack;
 
             // Damage Enemies, Play effects logic
 
-            // Wait for attack animation to finish
-            yield return new WaitForSeconds(0.5f);
-
-            // Return to Idle or Move state
-            isAttacking = false;
-            currentState = movement !=Vector2.zero? PlayerState.Move : PlayerState.Idle;
+            currentState = PlayerState.Attack;
+            AnimateState();
 
             // Wait for next attack interval
-            yield return new WaitForSeconds(attackInterval - 0.5f);
+            yield return new WaitForSeconds(attackInterval);
         }
     }
 }
