@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerStateMachine : MonoBehaviour
 {
@@ -11,16 +12,21 @@ public class PlayerStateMachine : MonoBehaviour
 
     public PlayerState currentState;
 
-    public float moveSpeed = 5f;
-    public Animator animator;
+    public float moveSpeed = 5f;        // Player move speed
+    public float attackInterval = 2f;   // Player attack speed
 
     private Rigidbody2D rb;
     private Vector2 movement;
+    private bool isAttacking = false;
+
+    public Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentState = PlayerState.Idle; // Initial state
+
+        StartCoroutine(AutoAttack());
     }
 
     void Update()
@@ -49,16 +55,12 @@ public class PlayerStateMachine : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         movement = movement.normalized;
 
-        // Attack input
-        if (Input.GetKeyDown(KeyCode.Space)) // Example attack key
-        {
-            currentState = PlayerState.Attack;
-        }
-        else if (movement != Vector2.zero)
+        // Change state based on move input recieved
+        if (movement != Vector2.zero)
         {
             currentState = PlayerState.Move;
         }
-        else
+        else if (!isAttacking) 
         {
             currentState = PlayerState.Idle;
         }
@@ -66,20 +68,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     void UpdateState()
     {
-        // Example attack logic: return to Idle after attacking
-        if (currentState == PlayerState.Attack)
-        {
-            // Simulate attack cooldown duration
-            Invoke("EndAttack", 0.5f); // Attack lasts for 0.5 seconds
-        }
-    }
-
-    void EndAttack()
-    {
-        if (currentState == PlayerState.Attack)
-        {
-            currentState = PlayerState.Idle;
-        }
+        
     }
 
     void AnimateState()
@@ -101,6 +90,28 @@ public class PlayerStateMachine : MonoBehaviour
                 animator.SetBool("isMoving", false);
                 animator.SetBool("isAttacking", true);
                 break;
+        }
+    }
+
+    IEnumerator AutoAttack()
+    {
+        while (true) 
+        {
+            // Trigger attack
+            isAttacking = true;
+            currentState = PlayerState.Attack;
+
+            // Damage Enemies, Play effects logic
+
+            // Wait for attack animation to finish
+            yield return new WaitForSeconds(0.5f);
+
+            // Return to Idle or Move state
+            isAttacking = false;
+            currentState = movement !=Vector2.zero? PlayerState.Move : PlayerState.Idle;
+
+            // Wait for next attack interval
+            yield return new WaitForSeconds(attackInterval - 0.5f);
         }
     }
 }
