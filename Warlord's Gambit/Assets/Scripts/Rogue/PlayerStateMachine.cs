@@ -18,7 +18,9 @@ public class PlayerStateMachine : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 movement;
+
     private bool isAttacking = false;
+    private bool isFacingRight = true;
 
     public Animator animator;
 
@@ -39,6 +41,8 @@ public class PlayerStateMachine : MonoBehaviour
             UpdateState(); // Updates FSM states
         }
         AnimateState(); // Handles animation transitions
+
+        FlipSprite();   // Flip sprite based on movement direction
     }
 
     void FixedUpdate()
@@ -71,6 +75,22 @@ public class PlayerStateMachine : MonoBehaviour
         // Set animator parameters based on the state
         animator.SetBool("isMoving", movement != Vector2.zero && !isAttacking);
         animator.SetBool("isAttacking", isAttacking);
+    }
+
+    void FlipSprite()
+    {
+        if (movement.x < 0 && isFacingRight)
+        {
+            // Flip to face left
+            transform.localScale = new Vector3(-1, 1, 1);
+            isFacingRight = false;
+        }
+        else if (movement.x > 0 && !isFacingRight)
+        {
+            // Flip to face right
+            transform.localScale = new Vector3(1, 1, 1);
+            isFacingRight = true;
+        }
     }
 
     public void OnAttackAnimationEnd()
