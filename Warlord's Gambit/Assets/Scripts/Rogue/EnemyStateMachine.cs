@@ -17,6 +17,11 @@ public class EnemyStateMachine : MonoBehaviour
     public float attackRange = 2f;
     public float idleTime = 2f;
 
+    public GameObject fireballPrefab; 
+    public Transform spawnPoint;
+    public float fireballSpeed = 5f;
+    public float fireballLifetime = 2f;
+
     private Transform player;
     private Rigidbody2D rb;
     private Vector2 walkDirection;
@@ -131,5 +136,28 @@ public class EnemyStateMachine : MonoBehaviour
         }
 
         transform.localScale = currentScale;
+    }
+
+    // This function is called by the Animation Event
+    public void SpawnFireball()
+    {
+        if (fireballPrefab != null && spawnPoint != null)
+        {
+            // Instantiate the attack effect
+            GameObject fireballShot = Instantiate(fireballPrefab, spawnPoint.position, Quaternion.identity);
+
+            // Determine the direction based on enemy's facing direction
+            Vector3 direction = transform.localScale.x > 0 ? Vector3.left : Vector3.right;
+
+            // Set the movement for the effect
+            Rigidbody2D rb = fireballShot.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.velocity = direction * fireballSpeed;
+            }
+
+            // Destroy the effect after a set time
+            Destroy(fireballShot, fireballLifetime);
+        }
     }
 }
