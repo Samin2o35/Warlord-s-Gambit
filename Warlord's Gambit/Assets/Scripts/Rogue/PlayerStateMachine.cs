@@ -16,6 +16,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public float moveSpeed = 5f;        // Player move speed
     public float attackInterval = 2f;   // Player attack speed
+    public float attackDamage = 10f;    // Player attack damage
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -24,6 +25,7 @@ public class PlayerStateMachine : MonoBehaviour
     private bool isFacingRight = true;
 
     public Animator animator;
+    public Transform attackRange;
 
     void Start()
     {
@@ -119,12 +121,32 @@ public class PlayerStateMachine : MonoBehaviour
             isAttacking = true;
 
             // Damage Enemies, Play effects logic
+            DamageEnemiesInRange();
 
             currentState = PlayerState.Attack;
             AnimateState();
 
             // Wait for next attack interval
             yield return new WaitForSeconds(attackInterval);
+        }
+    }
+
+    private void DamageEnemiesInRange()
+    {
+        // Find all colliders within the attack range
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackRange.position, 
+            attackRange.GetComponent<CircleCollider2D>().radius * 2);
+
+        foreach (Collider2D collider in hitColliders)
+        {
+            if (collider.CompareTag("Enemy")) // Ensure only enemies are affected
+            {
+                EnemyStateMachine enemy = collider.GetComponent<EnemyStateMachine>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(attackDamage);
+                }
+            }
         }
     }
 }
