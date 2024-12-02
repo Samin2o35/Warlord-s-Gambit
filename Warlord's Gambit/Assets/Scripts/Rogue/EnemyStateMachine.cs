@@ -156,8 +156,22 @@ public class EnemyStateMachine : MonoBehaviour
                 rb.velocity = direction * fireballSpeed;
             }
 
+            // Flip the fireball to match the enemy's facing direction
+            fireballShot.transform.localScale = new Vector3(direction.x, 
+                fireballShot.transform.localScale.y, fireballShot.transform.localScale.z);
+
             // Destroy the effect after a set time
             Destroy(fireballShot, fireballLifetime);
         }
+    }
+
+    // Draw the debug sphere in the scene view to visualize the enemy's range
+    private void OnDrawGizmos()
+    {
+        // Set the color for the range gizmo (red in this case)
+        Gizmos.color = Color.red;
+
+        // Draw a sphere at the enemy's position with a radius equal to attackRange
+        Gizmos.DrawWireSphere(spawnPoint.position, attackRange);
     }
 }
