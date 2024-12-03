@@ -144,9 +144,15 @@ public class PlayerStateMachine : MonoBehaviour
                 EnemyStateMachine enemy = collider.GetComponent<EnemyStateMachine>();
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(attackDamage);
+                    enemy.TakeDamageFromPlayer(attackDamage);
                 }
             }
         }
+    }
+
+    public void TakeDamageFromFireball(float damage)
+    {
+        // Implement health reduction or destruction logic
+        Debug.Log("Player took " + damage + " damage!");
     }
 }

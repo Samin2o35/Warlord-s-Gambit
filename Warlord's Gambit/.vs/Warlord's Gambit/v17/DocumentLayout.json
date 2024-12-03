@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\scripts\\rogue\\enemystatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\scripts\\rogue\\playerstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rogue\\playerstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\scripts\\rogue\\fireballbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rogue\\fireballbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\rogue\\enemystatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rogue\\enemystatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\scripts\\rogue\\playerstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rogue\\playerstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\rogue\\wavespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rogue\\wavespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,30 +26,54 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "FireballBehavior.cs",
+              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\FireballBehavior.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Rogue\\FireballBehavior.cs",
+              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\FireballBehavior.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Rogue\\FireballBehavior.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T05:54:46.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WaveSpawner.cs",
+              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\WaveSpawner.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Rogue\\WaveSpawner.cs",
+              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\WaveSpawner.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Rogue\\WaveSpawner.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAgwH8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T05:07:07.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "EnemyStateMachine.cs",
               "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\EnemyStateMachine.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Rogue\\EnemyStateMachine.cs",
               "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\EnemyStateMachine.cs",
               "RelativeToolTip": "Assets\\Scripts\\Rogue\\EnemyStateMachine.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAiwH0AAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAQwKgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T09:51:25.696Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T09:51:25.696Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "PlayerStateMachine.cs",
               "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\PlayerStateMachine.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Rogue\\PlayerStateMachine.cs",
               "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\PlayerStateMachine.cs",
               "RelativeToolTip": "Assets\\Scripts\\Rogue\\PlayerStateMachine.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAJUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-28T09:38:53.122Z",
               "EditorCaption": ""

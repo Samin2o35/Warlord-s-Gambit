@@ -165,7 +165,7 @@ public class EnemyStateMachine : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamageFromPlayer(float damage)
     {
         // Implement health reduction or destruction logic
         Debug.Log("Enemy took " + damage + " damage!");
