@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 1939158790}
   - component: {fileID: 1939158789}
   m_Layer: 0
-  m_Name: EnemyWaveSpawner
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
