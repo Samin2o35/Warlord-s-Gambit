@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyStateMachine : MonoBehaviour
 {
+    #region Variables
     public enum EnemyState
     {
         Idle,
@@ -28,6 +29,7 @@ public class EnemyStateMachine : MonoBehaviour
     private bool isAttacking = false;
 
     public Animator animator;
+    #endregion
 
     void Start()
     {
@@ -79,6 +81,12 @@ public class EnemyStateMachine : MonoBehaviour
 
         for (float t = 0; t < walkDuration; t += Time.deltaTime)
         {
+            // Null check for player
+            if (player == null)
+            {
+                yield break; // Exit if player is no longer available
+            }
+
             if (Vector2.Distance(transform.position, player.position) <= attackRange)
             {
                 currentState = EnemyState.Attack;
@@ -178,6 +186,9 @@ public class EnemyStateMachine : MonoBehaviour
         Gizmos.color = Color.red;
 
         // Draw a sphere at the enemy's position with a radius equal to attackRange
-        Gizmos.DrawWireSphere(spawnPoint.position, attackRange);
+        if (spawnPoint != null)
+        {
+            Gizmos.DrawWireSphere(spawnPoint.position, attackRange);
+        }
     }
 }

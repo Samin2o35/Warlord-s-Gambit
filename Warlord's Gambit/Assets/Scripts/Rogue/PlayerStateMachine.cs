@@ -5,11 +5,13 @@ using System.Collections;
 
 public class PlayerStateMachine : MonoBehaviour
 {
+    #region Variables
     public enum PlayerState
     {
         Idle,
         Move,
-        Attack
+        Attack,
+        Death
     }
 
     public PlayerState currentState;
@@ -17,15 +19,18 @@ public class PlayerStateMachine : MonoBehaviour
     public float moveSpeed = 5f;        // Player move speed
     public float attackInterval = 2f;   // Player attack speed
     public float attackDamage = 10f;    // Player attack damage
+    public float health = 100f;         // Player health
 
     private Rigidbody2D rb;
     private Vector2 movement;
 
     private bool isAttacking = false;
     private bool isFacingRight = true;
+    private bool isDead = false;
 
     public Animator animator;
     public Transform attackRange;
+    #endregion
 
     void Start()
     {
@@ -37,6 +42,8 @@ public class PlayerStateMachine : MonoBehaviour
 
     void Update()
     {
+        if (isDead) return; // Prevent updates when dead
+
         HandleInput(); // Handles movement and attack input
 
         if (!isAttacking) // Only handle state if not attacking
@@ -50,6 +57,12 @@ public class PlayerStateMachine : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isDead)
+        {
+            rb.velocity = Vector2.zero; // Stop movement on death
+            return;
+        }
+
         rb.velocity = movement * moveSpeed; // Apply movement
     }
 
@@ -78,6 +91,7 @@ public class PlayerStateMachine : MonoBehaviour
         // Set animator parameters based on the state
         animator.SetBool("isMoving", movement != Vector2.zero && !isAttacking);
         animator.SetBool("isAttacking", isAttacking);
+        animator.SetBool("isDead", isDead);
     }
 
     void FlipSprite()
@@ -113,6 +127,7 @@ public class PlayerStateMachine : MonoBehaviour
         AnimateState();
     }
 
+    #region Player Attack
     IEnumerator AutoAttack()
     {
         while (true) 
@@ -149,10 +164,34 @@ public class PlayerStateMachine : MonoBehaviour
             }
         }
     }
+    #endregion
 
     public void TakeDamageFromFireball(float damage)
     {
-        // Implement health reduction or destruction logic
-        Debug.Log("Player took " + damage + " damage!");
+        if (isDead) return; // Already dead
+
+        health -= damage;
+        if (health <= 0)
+        {
+            StartCoroutine(HandleDeath());
+        }
+    }
+
+    private IEnumerator HandleDeath()
+    {
+        currentState = PlayerState.Death;
+        isDead = true;
+
+        // Trigger death animation
+        animator.SetTrigger("Death");
+
+        // Disable further input
+        rb.velocity = Vector2.zero;
+
+        // Wait for animation to complete (if required)
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Perform any cleanup or respawn logic here
+        Destroy(gameObject); // Destroy the player object
     }
 }

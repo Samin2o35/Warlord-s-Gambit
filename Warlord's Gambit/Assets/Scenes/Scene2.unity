@@ -462,6 +462,7 @@ MonoBehaviour:
   moveSpeed: 5
   attackInterval: 2
   attackDamage: 10
+  health: 20
   animator: {fileID: 1770214565}
   attackRange: {fileID: 137883324}
 --- !u!50 &1770214564
