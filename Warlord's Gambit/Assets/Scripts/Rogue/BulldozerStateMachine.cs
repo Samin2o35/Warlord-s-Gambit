@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MicrowaveStateMachine : MonoBehaviour
+public class BulldozerStateMachine : MonoBehaviour
 {
     #region Variables
-    public enum MicrowaveState
+    public enum EnemyState
     {
         Idle,
         Walk,
         Attack
     }
 
-    public MicrowaveState currentState;
+    public EnemyState currentState;
 
     public float walkSpeed = 2f;
     public float attackRange = 2f;
     public float idleTime = 2f;
 
-    public GameObject fireballPrefab; 
+    public GameObject fireballPrefab;
     public Transform spawnPoint;
     public float fireballSpeed = 5f;
     public float fireballLifetime = 2f;
@@ -37,7 +37,7 @@ public class MicrowaveStateMachine : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        currentState = MicrowaveState.Idle;
+        currentState = EnemyState.Idle;
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         StartCoroutine(StateMachine());
@@ -56,14 +56,8 @@ public class MicrowaveStateMachine : MonoBehaviour
         // Use the negative Y-coordinate to determine sorting order.lower Y means displayed top of others
         if (spriteRenderer != null)
         {
-            // Primary criterion: Y-coordinate
-            int baseOrder = Mathf.RoundToInt(-transform.position.y * 100);
-
-            // Secondary criterion: InstanceID ensures unique sorting for overlapping Y-values
-            int tieBreaker = GetInstanceID() % 1000;
-
-            // Combine primary and secondary criteria
-            spriteRenderer.sortingOrder = baseOrder * 1000 + tieBreaker;
+            spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100);
+            // Multiplied by 100 to ensure larger differences for small Y changes
         }
     }
 
@@ -73,13 +67,13 @@ public class MicrowaveStateMachine : MonoBehaviour
         {
             switch (currentState)
             {
-                case MicrowaveState.Idle:
+                case EnemyState.Idle:
                     yield return StartCoroutine(IdleState());
                     break;
-                case MicrowaveState.Walk:
+                case EnemyState.Walk:
                     yield return StartCoroutine(WalkState());
                     break;
-                case MicrowaveState.Attack:
+                case EnemyState.Attack:
                     yield return StartCoroutine(AttackState());
                     break;
             }
@@ -92,7 +86,7 @@ public class MicrowaveStateMachine : MonoBehaviour
         yield return new WaitForSeconds(idleTime);
 
         // Transition to Walk state
-        currentState = MicrowaveState.Walk;
+        currentState = EnemyState.Walk;
     }
 
     IEnumerator WalkState()
@@ -111,7 +105,7 @@ public class MicrowaveStateMachine : MonoBehaviour
 
             if (Vector2.Distance(transform.position, player.position) <= attackRange)
             {
-                currentState = MicrowaveState.Attack;
+                currentState = EnemyState.Attack;
                 yield break;
             }
 
@@ -119,7 +113,7 @@ public class MicrowaveStateMachine : MonoBehaviour
             Vector2 directionToPlayer = (player.position - transform.position).normalized;
             rb.velocity = directionToPlayer * walkSpeed;
 
-            // Flip the Microwave to face the player
+            // Flip the enemy to face the player
             FlipTowardsPlayer(directionToPlayer.x);
 
             yield return null;
@@ -128,7 +122,7 @@ public class MicrowaveStateMachine : MonoBehaviour
         rb.velocity = Vector2.zero;
 
         // Transition to Idle state
-        currentState = MicrowaveState.Idle;
+        currentState = EnemyState.Idle;
     }
 
     IEnumerator AttackState()
@@ -144,7 +138,7 @@ public class MicrowaveStateMachine : MonoBehaviour
         isAttacking = false;
 
         // Return to Idle or Walk state
-        currentState = MicrowaveState.Idle;
+        currentState = EnemyState.Idle;
     }
 
     void AnimateState()
@@ -176,7 +170,7 @@ public class MicrowaveStateMachine : MonoBehaviour
             // Instantiate the attack effect
             GameObject fireballShot = Instantiate(fireballPrefab, spawnPoint.position, Quaternion.identity);
 
-            // Determine the direction based on Microwave's facing direction
+            // Determine the direction based on enemy's facing direction
             Vector3 direction = transform.localScale.x > 0 ? Vector3.left : Vector3.right;
 
             // Set the movement for the effect
@@ -186,8 +180,8 @@ public class MicrowaveStateMachine : MonoBehaviour
                 rb.velocity = direction * fireballSpeed;
             }
 
-            // Flip the fireball to match the Microwave's facing direction
-            fireballShot.transform.localScale = new Vector3(-direction.x, 
+            // Flip the fireball to match the enemy's facing direction
+            fireballShot.transform.localScale = new Vector3(-direction.x,
                 fireballShot.transform.localScale.y, fireballShot.transform.localScale.z);
 
             // Destroy the effect after a set time
@@ -198,16 +192,16 @@ public class MicrowaveStateMachine : MonoBehaviour
     public void TakeDamageFromPlayer(float damage)
     {
         // Implement health reduction or destruction logic
-        Debug.Log("Microwave took " + damage + " damage!");
+        Debug.Log("Enemy took " + damage + " damage!");
     }
 
-    // Draw the debug sphere in the scene view to visualize the Microwave's range
+    // Draw the debug sphere in the scene view to visualize the enemy's range
     private void OnDrawGizmos()
     {
         // Set the color for the range gizmo (red in this case)
         Gizmos.color = Color.red;
 
-        // Draw a sphere at the Microwave's position with a radius equal to attackRange
+        // Draw a sphere at the enemy's position with a radius equal to attackRange
         if (spawnPoint != null)
         {
             Gizmos.DrawWireSphere(spawnPoint.position, attackRange);

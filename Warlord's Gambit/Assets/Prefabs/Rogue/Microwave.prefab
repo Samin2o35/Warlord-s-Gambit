@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 5253300370374762312}
   - component: {fileID: 5569783494828533755}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Microwave
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

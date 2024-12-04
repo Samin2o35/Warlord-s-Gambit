@@ -91,7 +91,7 @@ public class PlayerStateMachine : MonoBehaviour
         // Set animator parameters based on the state
         animator.SetBool("isMoving", movement != Vector2.zero && !isAttacking);
         animator.SetBool("isAttacking", isAttacking);
-        animator.SetBool("isDead", isDead);
+        animator.SetBool("Death", isDead);
     }
 
     void FlipSprite()
