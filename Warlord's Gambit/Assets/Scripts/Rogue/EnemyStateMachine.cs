@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStateMachine : MonoBehaviour
+public class MicrowaveStateMachine : MonoBehaviour
 {
     #region Variables
-    public enum EnemyState
+    public enum MicrowaveState
     {
         Idle,
         Walk,
         Attack
     }
 
-    public EnemyState currentState;
+    public MicrowaveState currentState;
 
     public float walkSpeed = 2f;
     public float attackRange = 2f;
@@ -37,7 +37,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        currentState = EnemyState.Idle;
+        currentState = MicrowaveState.Idle;
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         StartCoroutine(StateMachine());
@@ -67,13 +67,13 @@ public class EnemyStateMachine : MonoBehaviour
         {
             switch (currentState)
             {
-                case EnemyState.Idle:
+                case MicrowaveState.Idle:
                     yield return StartCoroutine(IdleState());
                     break;
-                case EnemyState.Walk:
+                case MicrowaveState.Walk:
                     yield return StartCoroutine(WalkState());
                     break;
-                case EnemyState.Attack:
+                case MicrowaveState.Attack:
                     yield return StartCoroutine(AttackState());
                     break;
             }
@@ -86,7 +86,7 @@ public class EnemyStateMachine : MonoBehaviour
         yield return new WaitForSeconds(idleTime);
 
         // Transition to Walk state
-        currentState = EnemyState.Walk;
+        currentState = MicrowaveState.Walk;
     }
 
     IEnumerator WalkState()
@@ -105,7 +105,7 @@ public class EnemyStateMachine : MonoBehaviour
 
             if (Vector2.Distance(transform.position, player.position) <= attackRange)
             {
-                currentState = EnemyState.Attack;
+                currentState = MicrowaveState.Attack;
                 yield break;
             }
 
@@ -113,7 +113,7 @@ public class EnemyStateMachine : MonoBehaviour
             Vector2 directionToPlayer = (player.position - transform.position).normalized;
             rb.velocity = directionToPlayer * walkSpeed;
 
-            // Flip the enemy to face the player
+            // Flip the Microwave to face the player
             FlipTowardsPlayer(directionToPlayer.x);
 
             yield return null;
@@ -122,7 +122,7 @@ public class EnemyStateMachine : MonoBehaviour
         rb.velocity = Vector2.zero;
 
         // Transition to Idle state
-        currentState = EnemyState.Idle;
+        currentState = MicrowaveState.Idle;
     }
 
     IEnumerator AttackState()
@@ -138,7 +138,7 @@ public class EnemyStateMachine : MonoBehaviour
         isAttacking = false;
 
         // Return to Idle or Walk state
-        currentState = EnemyState.Idle;
+        currentState = MicrowaveState.Idle;
     }
 
     void AnimateState()
@@ -170,7 +170,7 @@ public class EnemyStateMachine : MonoBehaviour
             // Instantiate the attack effect
             GameObject fireballShot = Instantiate(fireballPrefab, spawnPoint.position, Quaternion.identity);
 
-            // Determine the direction based on enemy's facing direction
+            // Determine the direction based on Microwave's facing direction
             Vector3 direction = transform.localScale.x > 0 ? Vector3.left : Vector3.right;
 
             // Set the movement for the effect
@@ -180,7 +180,7 @@ public class EnemyStateMachine : MonoBehaviour
                 rb.velocity = direction * fireballSpeed;
             }
 
-            // Flip the fireball to match the enemy's facing direction
+            // Flip the fireball to match the Microwave's facing direction
             fireballShot.transform.localScale = new Vector3(-direction.x, 
                 fireballShot.transform.localScale.y, fireballShot.transform.localScale.z);
 
@@ -192,16 +192,16 @@ public class EnemyStateMachine : MonoBehaviour
     public void TakeDamageFromPlayer(float damage)
     {
         // Implement health reduction or destruction logic
-        Debug.Log("Enemy took " + damage + " damage!");
+        Debug.Log("Microwave took " + damage + " damage!");
     }
 
-    // Draw the debug sphere in the scene view to visualize the enemy's range
+    // Draw the debug sphere in the scene view to visualize the Microwave's range
     private void OnDrawGizmos()
     {
         // Set the color for the range gizmo (red in this case)
         Gizmos.color = Color.red;
 
-        // Draw a sphere at the enemy's position with a radius equal to attackRange
+        // Draw a sphere at the Microwave's position with a radius equal to attackRange
         if (spawnPoint != null)
         {
             Gizmos.DrawWireSphere(spawnPoint.position, attackRange);

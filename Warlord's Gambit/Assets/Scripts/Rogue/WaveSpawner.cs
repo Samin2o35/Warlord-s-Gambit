@@ -114,7 +114,7 @@ public class WaveSpawner : MonoBehaviour
     private void OnDrawGizmos()
     {
         // Draw a sphere at each spawn location
-        Gizmos.color = Color.red; // Set the color for the Gizmo
+        Gizmos.color = Color.yellow; // Set the color for the Gizmo
         if (spawnLocation != null)
         {
             foreach (Transform spawnPoint in spawnLocation)
