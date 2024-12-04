@@ -18,11 +18,6 @@ public class BulldozerStateMachine : MonoBehaviour
     public float attackRange = 2f;
     public float idleTime = 2f;
 
-    public GameObject fireballPrefab;
-    public Transform spawnPoint;
-    public float fireballSpeed = 5f;
-    public float fireballLifetime = 2f;
-
     private Transform player;
     private Rigidbody2D rb;
     private Vector2 walkDirection;
@@ -162,33 +157,6 @@ public class BulldozerStateMachine : MonoBehaviour
         transform.localScale = currentScale;
     }
 
-    // This function is called by the Animation Event
-    public void SpawnFireball()
-    {
-        if (fireballPrefab != null && spawnPoint != null)
-        {
-            // Instantiate the attack effect
-            GameObject fireballShot = Instantiate(fireballPrefab, spawnPoint.position, Quaternion.identity);
-
-            // Determine the direction based on enemy's facing direction
-            Vector3 direction = transform.localScale.x > 0 ? Vector3.left : Vector3.right;
-
-            // Set the movement for the effect
-            Rigidbody2D rb = fireballShot.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.velocity = direction * fireballSpeed;
-            }
-
-            // Flip the fireball to match the enemy's facing direction
-            fireballShot.transform.localScale = new Vector3(-direction.x,
-                fireballShot.transform.localScale.y, fireballShot.transform.localScale.z);
-
-            // Destroy the effect after a set time
-            Destroy(fireballShot, fireballLifetime);
-        }
-    }
-
     public void TakeDamageFromPlayer(float damage)
     {
         // Implement health reduction or destruction logic
@@ -202,9 +170,6 @@ public class BulldozerStateMachine : MonoBehaviour
         Gizmos.color = Color.red;
 
         // Draw a sphere at the enemy's position with a radius equal to attackRange
-        if (spawnPoint != null)
-        {
-            Gizmos.DrawWireSphere(spawnPoint.position, attackRange);
-        }
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
