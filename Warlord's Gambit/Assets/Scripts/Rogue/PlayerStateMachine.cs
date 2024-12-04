@@ -156,10 +156,10 @@ public class PlayerStateMachine : MonoBehaviour
         {
             if (collider.CompareTag("Enemy")) // Ensure only enemies are affected
             {
-                EnemyStateMachine enemy = collider.GetComponent<EnemyStateMachine>();
-                if (enemy != null)
+                MicrowaveStateMachine microwave = collider.GetComponent<MicrowaveStateMachine>();
+                if (microwave != null)
                 {
-                    enemy.TakeDamageFromPlayer(attackDamage);
+                    microwave.TakeDamageFromPlayer(attackDamage);
                 }
             }
         }
