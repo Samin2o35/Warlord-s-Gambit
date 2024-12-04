@@ -26,6 +26,8 @@ public class EnemyStateMachine : MonoBehaviour
     private Transform player;
     private Rigidbody2D rb;
     private Vector2 walkDirection;
+    private SpriteRenderer spriteRenderer;
+
     private bool isAttacking = false;
 
     public Animator animator;
@@ -36,6 +38,7 @@ public class EnemyStateMachine : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         currentState = EnemyState.Idle;
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         StartCoroutine(StateMachine());
     }
@@ -43,6 +46,19 @@ public class EnemyStateMachine : MonoBehaviour
     void Update()
     {
         AnimateState();
+
+        // Adjust the sorting order dynamically
+        UpdateSortingOrder();
+    }
+
+    void UpdateSortingOrder()
+    {
+        // Use the negative Y-coordinate to determine sorting order.lower Y means displayed top of others
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100);
+            // Multiplied by 100 to ensure larger differences for small Y changes
+        }
     }
 
     IEnumerator StateMachine()
