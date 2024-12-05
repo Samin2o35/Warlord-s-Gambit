@@ -166,11 +166,22 @@ public class PlayerStateMachine : MonoBehaviour
     }
     #endregion
 
-    public void TakeDamageFromFireball(float damage)
+    public void TakeDamageFromFireball(float damageAmount)
     {
         if (isDead) return; // Already dead
 
-        health -= damage;
+        health -= damageAmount;
+        if (health <= 0)
+        {
+            StartCoroutine(HandleDeath());
+        }
+    }
+
+    public void TakeDamageFromAoE(float aoeDamage)
+    {
+        if (isDead) return;
+
+        health -= aoeDamage;
         if (health <= 0)
         {
             StartCoroutine(HandleDeath());

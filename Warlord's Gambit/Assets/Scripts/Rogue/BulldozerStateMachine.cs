@@ -18,6 +18,8 @@ public class BulldozerStateMachine : MonoBehaviour
     public float attackRange = 2f;
     public float idleTime = 2f;
 
+    public int aoeDamage = 5; // Amount of damage to deal
+
     private Transform player;
     private Rigidbody2D rb;
     private Vector2 walkDirection;
@@ -51,8 +53,14 @@ public class BulldozerStateMachine : MonoBehaviour
         // Use the negative Y-coordinate to determine sorting order.lower Y means displayed top of others
         if (spriteRenderer != null)
         {
-            spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100);
-            // Multiplied by 100 to ensure larger differences for small Y changes
+            // Primary criterion: Y-coordinate
+            int baseOrder = Mathf.RoundToInt(-transform.position.y * 100);
+
+            // Secondary criterion: InstanceID ensures unique sorting for overlapping Y-values
+            int tieBreaker = GetInstanceID() % 1000;
+
+            // Combine primary and secondary criteria
+            spriteRenderer.sortingOrder = baseOrder * 1000 + tieBreaker;
         }
     }
 
@@ -127,6 +135,9 @@ public class BulldozerStateMachine : MonoBehaviour
         isAttacking = true;
         animator.SetTrigger("Attack");
 
+        // Execute AoE attack
+        // AoEAttack();
+
         // Simulate attack duration
         yield return new WaitForSeconds(1f);
 
@@ -157,10 +168,29 @@ public class BulldozerStateMachine : MonoBehaviour
         transform.localScale = currentScale;
     }
 
-    public void TakeDamageFromPlayer(float damage)
+    void AoEAttack()
+    {
+        // Find all colliders within the attack range
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, attackRange);
+
+        foreach (Collider2D collider in hitColliders)
+        {
+            // Check if the collider belongs to the player or other attackable objects
+            if (collider.CompareTag("Player"))
+            {
+                PlayerStateMachine player = collider.GetComponent<PlayerStateMachine>();
+                if (player != null)
+                {
+                    player.TakeDamageFromAoE(aoeDamage);
+                }
+            }
+        }
+    }
+
+    public void TakeDamageFromPlayer(float attackDamage)
     {
         // Implement health reduction or destruction logic
-        Debug.Log("Enemy took " + damage + " damage!");
+        Debug.Log("Bulldozer took " + attackDamage + " damage!");
     }
 
     // Draw the debug sphere in the scene view to visualize the enemy's range

@@ -195,10 +195,10 @@ public class MicrowaveStateMachine : MonoBehaviour
         }
     }
 
-    public void TakeDamageFromPlayer(float damage)
+    public void TakeDamageFromPlayer(float attackDamage)
     {
         // Implement health reduction or destruction logic
-        Debug.Log("Microwave took " + damage + " damage!");
+        Debug.Log("Microwave took " + attackDamage + " damage!");
     }
 
     // Draw the debug sphere in the scene view to visualize the Microwave's range
