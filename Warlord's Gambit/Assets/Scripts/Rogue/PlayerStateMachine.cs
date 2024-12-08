@@ -173,7 +173,7 @@ public class PlayerStateMachine : MonoBehaviour
         health -= damageAmount;
         if (health <= 0)
         {
-            StartCoroutine(HandleDeath());
+            StartCoroutine(HandlePlayerDeath());
         }
     }
 
@@ -184,11 +184,11 @@ public class PlayerStateMachine : MonoBehaviour
         health -= aoeDamage;
         if (health <= 0)
         {
-            StartCoroutine(HandleDeath());
+            StartCoroutine(HandlePlayerDeath());
         }
     }
 
-    private IEnumerator HandleDeath()
+    private IEnumerator HandlePlayerDeath()
     {
         currentState = PlayerState.Death;
         isDead = true;

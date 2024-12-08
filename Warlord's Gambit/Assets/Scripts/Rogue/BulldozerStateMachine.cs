@@ -9,7 +9,8 @@ public class BulldozerStateMachine : MonoBehaviour
     {
         Idle,
         Walk,
-        Attack
+        Attack,
+        Death
     }
 
     public EnemyState currentState;
@@ -17,6 +18,7 @@ public class BulldozerStateMachine : MonoBehaviour
     public float walkSpeed = 2f;
     public float attackRange = 2f;
     public float idleTime = 2f;
+    public float health = 10f;
 
     public int aoeDamage = 5; // Amount of damage to deal
 
@@ -26,6 +28,7 @@ public class BulldozerStateMachine : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private bool isAttacking = false;
+    private bool isDead = false;
 
     public Animator animator;
     #endregion
@@ -42,6 +45,8 @@ public class BulldozerStateMachine : MonoBehaviour
 
     void Update()
     {
+        if (isDead) return; // Prevent updates when dead
+
         AnimateState();
 
         // Adjust the sorting order dynamically
@@ -190,7 +195,32 @@ public class BulldozerStateMachine : MonoBehaviour
     public void TakeDamageFromPlayer(float attackDamage)
     {
         // Implement health reduction or destruction logic
+        if (isDead) return; // Prevent updates when dead
+
+        health -= attackDamage;
+        if (health <= 0)
+        {
+            StartCoroutine(HandleEnemyDeath());
+        }
         Debug.Log("Bulldozer took " + attackDamage + " damage!");
+    }
+
+    private IEnumerator HandleEnemyDeath()
+    {
+        currentState = EnemyState.Death;
+        isDead = true;
+
+        // Trigger death animation
+        animator.SetTrigger("Death");
+
+        // Disable further input
+        rb.velocity = Vector2.zero;
+
+        // Wait for animation to complete (if required)
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Perform any cleanup or respawn logic here
+        Destroy(gameObject); // Destroy the player object
     }
 
     // Draw the debug sphere in the scene view to visualize the enemy's range
