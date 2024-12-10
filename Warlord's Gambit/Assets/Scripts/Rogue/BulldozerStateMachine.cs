@@ -141,7 +141,7 @@ public class BulldozerStateMachine : MonoBehaviour
         animator.SetTrigger("Attack");
 
         // Execute AoE attack
-        // AoEAttack();
+        AoEAttack();
 
         // Simulate attack duration
         yield return new WaitForSeconds(1f);
@@ -187,6 +187,7 @@ public class BulldozerStateMachine : MonoBehaviour
                 if (player != null)
                 {
                     player.TakeDamageFromAoE(aoeDamage);
+                    // Debug.Log("Player took AoE damage: " + aoeDamage);
                 }
             }
         }

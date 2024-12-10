@@ -19,9 +19,15 @@ public class WaveSpawner : MonoBehaviour
     private float spawnTimer;
 
     public List<GameObject> spawnedEnemies = new List<GameObject>();
+
+    private Camera mainCamera; // Reference to the main camera
+    public float offScreenOffset = 2f; // Distance outside the screen boundaries
+
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = Camera.main; // Get the main camera reference
+        UpdateSpawnLocationsOffScreen();
         GenerateWave();
     }
 
@@ -109,6 +115,19 @@ public class WaveSpawner : MonoBehaviour
         }
         enemiesToSpawn.Clear();
         enemiesToSpawn = generatedEnemies;
+    }
+
+    private void UpdateSpawnLocationsOffScreen()
+    {
+        // Get the camera's screen bounds
+        Vector3 bottomLeft = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, 0));
+        Vector3 topRight = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+
+        // Place spawn locations outside the screen
+        spawnLocation[0].position = new Vector3(bottomLeft.x - offScreenOffset, Random.Range(bottomLeft.y, topRight.y), 0); // Left
+        spawnLocation[1].position = new Vector3(topRight.x + offScreenOffset, Random.Range(bottomLeft.y, topRight.y), 0);  // Right
+        spawnLocation[2].position = new Vector3(Random.Range(bottomLeft.x, topRight.x), bottomLeft.y - offScreenOffset, 0); // Bottom
+        spawnLocation[3].position = new Vector3(Random.Range(bottomLeft.x, topRight.x), topRight.y + offScreenOffset, 0);  // Top
     }
 
     private void OnDrawGizmos()
