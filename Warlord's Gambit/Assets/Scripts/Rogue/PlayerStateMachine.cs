@@ -11,6 +11,7 @@ public class PlayerStateMachine : MonoBehaviour
         Idle,
         Move,
         Attack,
+        Hurt,
         Death
     }
 
@@ -171,7 +172,12 @@ public class PlayerStateMachine : MonoBehaviour
         if (isDead) return; // Already dead
 
         health -= damageAmount;
-        if (health <= 0)
+
+        if (health > 0)
+        {
+            StartCoroutine(HandlePlayerHurt());
+        }
+        else
         {
             StartCoroutine(HandlePlayerDeath());
         }
@@ -182,10 +188,42 @@ public class PlayerStateMachine : MonoBehaviour
         if (isDead) return;
 
         health -= aoeDamage;
-        if (health <= 0)
+
+        if (health > 0)
+        {
+            StartCoroutine(HandlePlayerHurt());
+        }
+        else
         {
             StartCoroutine(HandlePlayerDeath());
         }
+    }
+
+    private IEnumerator HandlePlayerHurt()
+    {
+        currentState = PlayerState.Hurt;
+
+        // Trigger hurt animation
+        animator.SetTrigger("Hurt");
+
+        // Stun player
+        isAttacking = true;
+        rb.velocity = Vector2.zero;
+
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Transition back to idle or move state
+        isAttacking = false;
+        if (movement != Vector2.zero)
+        {
+            currentState = PlayerState.Move;
+        }
+        else
+        {
+            currentState = PlayerState.Idle;
+        }
+
+        AnimateState();
     }
 
     private IEnumerator HandlePlayerDeath()
