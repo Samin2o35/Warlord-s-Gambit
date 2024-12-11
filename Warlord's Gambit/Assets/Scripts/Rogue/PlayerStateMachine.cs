@@ -173,13 +173,13 @@ public class PlayerStateMachine : MonoBehaviour
 
         health -= damageAmount;
 
-        if (health > 0)
+        if (health <= 0)
         {
-            StartCoroutine(HandlePlayerHurt());
+            StartCoroutine(HandlePlayerDeath());
         }
         else
         {
-            StartCoroutine(HandlePlayerDeath());
+            StartCoroutine(HandlePlayerHurt());
         }
     }
 
@@ -189,18 +189,21 @@ public class PlayerStateMachine : MonoBehaviour
 
         health -= aoeDamage;
 
-        if (health > 0)
+        if (health <= 0)
         {
-            StartCoroutine(HandlePlayerHurt());
+            StartCoroutine(HandlePlayerDeath());
         }
         else
         {
-            StartCoroutine(HandlePlayerDeath());
+            StartCoroutine(HandlePlayerHurt());
         }
     }
 
     private IEnumerator HandlePlayerHurt()
     {
+        // If the player is already dead, skip the hurt state
+        if (isDead) yield break;
+
         currentState = PlayerState.Hurt;
 
         // Trigger hurt animation
@@ -214,16 +217,18 @@ public class PlayerStateMachine : MonoBehaviour
 
         // Transition back to idle or move state
         isAttacking = false;
-        if (movement != Vector2.zero)
+        if (!isDead) 
         {
-            currentState = PlayerState.Move;
+            if (movement != Vector2.zero)
+            {
+                currentState = PlayerState.Move;
+            }
+            else
+            {
+                currentState = PlayerState.Idle;
+            }
+            AnimateState();
         }
-        else
-        {
-            currentState = PlayerState.Idle;
-        }
-
-        AnimateState();
     }
 
     private IEnumerator HandlePlayerDeath()
@@ -236,6 +241,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         // Disable further input
         rb.velocity = Vector2.zero;
+        isAttacking = false;
 
         // Wait for animation to complete (if required)
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
