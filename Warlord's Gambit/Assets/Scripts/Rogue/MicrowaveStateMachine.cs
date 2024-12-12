@@ -9,7 +9,9 @@ public class MicrowaveStateMachine : MonoBehaviour
     {
         Idle,
         Walk,
-        Attack
+        Attack,
+        Hurt,
+        Death
     }
 
     public MicrowaveState currentState;
@@ -22,12 +24,16 @@ public class MicrowaveStateMachine : MonoBehaviour
     public Transform spawnPoint;
     public float fireballSpeed = 5f;
     public float fireballLifetime = 2f;
+    public float health = 100f;             // Total health of the Microwave
+    public float hurtDuration = 0.5f;       // Time spent in hurt state
+    public float deathDelay = 1f;           // Time before destruction after death
 
     private Transform player;
     private Rigidbody2D rb;
     private Vector2 walkDirection;
     private SpriteRenderer spriteRenderer;
 
+    private bool isDead = false;            // To prevent further state changes after death
     private bool isAttacking = false;
 
     public Animator animator;
@@ -81,6 +87,12 @@ public class MicrowaveStateMachine : MonoBehaviour
                     break;
                 case MicrowaveState.Attack:
                     yield return StartCoroutine(AttackState());
+                    break;
+                case MicrowaveState.Hurt:
+                    yield return StartCoroutine(HurtState());
+                    break;
+                case MicrowaveState.Death:
+                    yield return StartCoroutine(DeathState());
                     break;
             }
         }
@@ -152,6 +164,40 @@ public class MicrowaveStateMachine : MonoBehaviour
         animator.SetBool("isAttacking", isAttacking);
     }
 
+    IEnumerator HurtState()
+    {
+        isAttacking = false;
+
+        // Stop movement during hurt
+        rb.velocity = Vector2.zero;
+        animator.SetTrigger("Hurt");
+
+        // Wait for the hurt animation to complete
+        yield return new WaitForSeconds(hurtDuration);
+
+        // Transition to Idle or Walk if still alive
+        if (!isDead)
+        {
+            currentState = MicrowaveState.Idle;
+        }
+    }
+
+    IEnumerator DeathState()
+    {
+        // Prevent further damage or state changes
+        isDead = true;
+
+        // Stop movement
+        rb.velocity = Vector2.zero;
+        animator.SetTrigger("Death");
+
+        // Wait for the death animation to complete
+        yield return new WaitForSeconds(deathDelay);
+
+        // Destroy the Microwave object
+        Destroy(gameObject);
+    }
+
     void FlipTowardsPlayer(float directionX)
     {
         Vector3 currentScale = transform.localScale;
@@ -197,8 +243,19 @@ public class MicrowaveStateMachine : MonoBehaviour
 
     public void TakeDamageFromPlayer(float attackDamage)
     {
-        // Implement health reduction or destruction logic
+        if (isDead) return; // Prevent taking damage after death
+
+        health -= attackDamage;
         Debug.Log("Microwave took " + attackDamage + " damage!");
+
+        if (health <= 0)
+        {
+            currentState = MicrowaveState.Death;
+        }
+        else
+        {
+            currentState = MicrowaveState.Hurt;
+        }
     }
 
     // Draw the debug sphere in the scene view to visualize the Microwave's range

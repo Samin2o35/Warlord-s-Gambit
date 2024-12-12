@@ -188,6 +188,9 @@ MonoBehaviour:
   spawnPoint: {fileID: 1970727877575453567}
   fireballSpeed: 5
   fireballLifetime: 2
+  health: 30
+  hurtDuration: 0.5
+  deathDelay: 1
   animator: {fileID: 8527920898002294488}
 --- !u!61 &5569783494828533755
 BoxCollider2D:
