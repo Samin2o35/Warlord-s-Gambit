@@ -68484,9 +68484,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - enemyPrefab: {fileID: 8164516400775706894, guid: 13cf34e1d892adf4c89f52cb57d780f1, type: 3}
-    cost: 5
+    cost: 2
   - enemyPrefab: {fileID: 8164516400775706894, guid: 13cf34e1d892adf4c89f52cb57d780f1, type: 3}
-    cost: 5
+    cost: 2
   currWave: 1
   enemiesToSpawn: []
   spawnLocation:
