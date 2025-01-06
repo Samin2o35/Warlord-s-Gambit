@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\rogue\\wavespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rogue\\wavespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\stickherocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\stickherocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\rogue\\microwavestatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rogue\\microwavestatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\rogue\\fireballbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rogue\\fireballbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\scripts\\rogue\\bulldozerstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\rogue\\bulldozerstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rogue\\bulldozerstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\rogue\\microwavestatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rogue\\microwavestatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\rogue\\playerstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,11 +30,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "StickHeroController.cs",
+              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\StickHeroController.cs",
+              "RelativeDocumentMoniker": "Assets\\StickHeroController.cs",
+              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\StickHeroController.cs",
+              "RelativeToolTip": "Assets\\StickHeroController.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAnwCUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T08:24:31.757Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MicrowaveStateMachine.cs",
               "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\MicrowaveStateMachine.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Rogue\\MicrowaveStateMachine.cs",
@@ -46,7 +59,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "BulldozerStateMachine.cs",
               "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\BulldozerStateMachine.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Rogue\\BulldozerStateMachine.cs",
@@ -54,12 +67,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Rogue\\BulldozerStateMachine.cs",
               "ViewState": "AgIAANIAAAAAAAAAAAAiwL0AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T10:50:11.25Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-04T10:50:11.25Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "FireballBehavior.cs",
               "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\FireballBehavior.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Rogue\\FireballBehavior.cs",
@@ -67,21 +79,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Rogue\\FireballBehavior.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAUwDIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T05:54:46.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WaveSpawner.cs",
-              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\WaveSpawner.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Rogue\\WaveSpawner.cs",
-              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\Rogue\\WaveSpawner.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Rogue\\WaveSpawner.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAADwvz8AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T05:07:07.18Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T05:54:46.315Z"
             },
             {
               "$type": "Document",
