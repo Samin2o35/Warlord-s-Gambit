@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\stickstretch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\stickstretch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\platformgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\platformgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\platform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\platform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "StickStretch.cs",
-              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\StickStretch.cs",
-              "RelativeDocumentMoniker": "Assets\\StickStretch.cs",
-              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\StickStretch.cs",
-              "RelativeToolTip": "Assets\\StickStretch.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Title": "PlatformGenerator.cs",
+              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\PlatformGenerator.cs",
+              "RelativeDocumentMoniker": "Assets\\PlatformGenerator.cs",
+              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\PlatformGenerator.cs",
+              "RelativeToolTip": "Assets\\PlatformGenerator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-07T04:36:32.802Z",
+              "WhenOpened": "2025-01-07T10:08:10.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Platform.cs",
+              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Platform.cs",
+              "RelativeDocumentMoniker": "Assets\\Platform.cs",
+              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Platform.cs",
+              "RelativeToolTip": "Assets\\Platform.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T10:06:07.689Z",
               "EditorCaption": ""
             }
           ]
