@@ -4,38 +4,26 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject heroPrefab;
-    public float heroSpawnHeight;
+    [Header("Player Settings")]
+    public GameObject playerPrefab; // Drag the player prefab here in the Inspector
+    public Vector3 spawnOffset = Vector3.zero; // Adjust this in the Inspector for the desired offset
 
-    // Start is called before the first frame update
     void Start()
     {
-        SpawnHeroOnStartingPlatform();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void SpawnHeroOnStartingPlatform()
-    {
-        // Find the platform with the "StartingPlatform" tag
-        GameObject startingPlatform = GameObject.FindGameObjectWithTag("Starting Platform");
+        // Find the starting platform
+        GameObject startingPlatform = GameObject.FindGameObjectWithTag("StartingPlatform");
 
         if (startingPlatform != null)
         {
-            // Get the platform's position
-            Vector3 platformPosition = startingPlatform.transform.position;
+            // Get the platform's position and apply the offset
+            Vector3 spawnPosition = startingPlatform.transform.position + spawnOffset;
 
-            // Spawn the Hero slightly above the platform
-            Vector3 heroSpawnPosition = platformPosition + Vector3.up * heroSpawnHeight; // Adjust Y offset as needed
-            Instantiate(heroPrefab, heroSpawnPosition, Quaternion.identity);
+            // Instantiate the player prefab at the adjusted spawn position
+            Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
         }
         else
         {
-            Debug.LogError("No platform with the 'StartingPlatform' tag found in the scene.");
+            Debug.LogError("No GameObject with the tag 'StartingPlatform' found in the scene.");
         }
     }
 }
