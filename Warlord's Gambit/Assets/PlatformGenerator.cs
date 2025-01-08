@@ -11,10 +11,14 @@ public class PlatformGenerator : MonoBehaviour
     public float minGap = 1.5f; // Minimum gap between platforms
     public float maxGap = 3f; // Maximum gap between platforms
 
+    public Vector3 startPosition = new Vector3(0, -2, 0); // Custom starting position
     private Vector3 nextPosition = Vector3.zero;
 
     void Start()
     {
+        // Initialize nextPosition to startPosition
+        nextPosition = startPosition;
+
         GenerateInitialPlatforms();
     }
 

@@ -3,11 +3,23 @@
   "WorkspaceRootPath": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\platformgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\stickcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\stickcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\platformgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\platformgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\platform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\herocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\herocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\platform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\platform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -23,19 +35,56 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PlatformGenerator.cs",
-              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\PlatformGenerator.cs",
-              "RelativeDocumentMoniker": "Assets\\PlatformGenerator.cs",
-              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\PlatformGenerator.cs",
-              "RelativeToolTip": "Assets\\PlatformGenerator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameManager.cs",
+              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\GameManager.cs",
+              "RelativeToolTip": "Assets\\GameManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-07T10:08:10.208Z",
+              "WhenOpened": "2025-01-08T06:05:25.526Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "StickController.cs",
+              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\StickController.cs",
+              "RelativeDocumentMoniker": "Assets\\StickController.cs",
+              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\StickController.cs",
+              "RelativeToolTip": "Assets\\StickController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-08T05:42:37.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HeroController.cs",
+              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\HeroController.cs",
+              "RelativeDocumentMoniker": "Assets\\HeroController.cs",
+              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\HeroController.cs",
+              "RelativeToolTip": "Assets\\HeroController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-08T05:10:53.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlatformGenerator.cs",
+              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\PlatformGenerator.cs",
+              "RelativeDocumentMoniker": "Assets\\PlatformGenerator.cs",
+              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\PlatformGenerator.cs",
+              "RelativeToolTip": "Assets\\PlatformGenerator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T10:08:10.208Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Platform.cs",
               "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Platform.cs",
               "RelativeDocumentMoniker": "Assets\\Platform.cs",
@@ -43,8 +92,7 @@
               "RelativeToolTip": "Assets\\Platform.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-07T10:06:07.689Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-07T10:06:07.689Z"
             }
           ]
         }
