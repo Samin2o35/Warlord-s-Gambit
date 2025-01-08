@@ -5,21 +5,37 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject heroPrefab;
-    public GameObject stickPrefab;
+    public float heroSpawnHeight;
 
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 firstPlatformPosition = new Vector3(0, -2, 0); // Match first platform position
-        Instantiate(heroPrefab, firstPlatformPosition + Vector3.up * 1.5f, Quaternion.identity);
-
-        Vector3 stickPosition = firstPlatformPosition + Vector3.up * 2; // Place stick near Hero
-        Instantiate(stickPrefab, stickPosition, Quaternion.identity);
+        SpawnHeroOnStartingPlatform();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void SpawnHeroOnStartingPlatform()
+    {
+        // Find the platform with the "StartingPlatform" tag
+        GameObject startingPlatform = GameObject.FindGameObjectWithTag("Starting Platform");
+
+        if (startingPlatform != null)
+        {
+            // Get the platform's position
+            Vector3 platformPosition = startingPlatform.transform.position;
+
+            // Spawn the Hero slightly above the platform
+            Vector3 heroSpawnPosition = platformPosition + Vector3.up * heroSpawnHeight; // Adjust Y offset as needed
+            Instantiate(heroPrefab, heroSpawnPosition, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("No platform with the 'StartingPlatform' tag found in the scene.");
+        }
     }
 }

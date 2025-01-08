@@ -14,4 +14,12 @@ public class Platform : MonoBehaviour
         scale.x = width;
         transform.localScale = scale;
     }
+
+    public bool IsStickOnPlatform(Vector3 stickEndPosition)
+    {
+        float leftEdge = Position.x - Width / 2;
+        float rightEdge = Position.x + Width / 2;
+
+        return stickEndPosition.x >= leftEdge && stickEndPosition.x <= rightEdge;
+    }
 }

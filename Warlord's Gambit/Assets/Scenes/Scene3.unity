@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroPrefab: {fileID: 3428787912407882053, guid: 3a364178ccd14204ea1f78b29e96ae0d, type: 3}
-  stickPrefab: {fileID: 6941671384563390158, guid: f871f427742b64341ac9d067307b29ba, type: 3}
+  heroSpawnHeight: 2
 --- !u!1 &1184638912
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +428,10 @@ PrefabInstance:
     - target: {fileID: 7887218677602150192, guid: 1bd0ab5865cf56344893ee51175abb11, type: 3}
       propertyPath: m_Name
       value: Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887218677602150192, guid: 1bd0ab5865cf56344893ee51175abb11, type: 3}
+      propertyPath: m_TagString
+      value: Starting Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
