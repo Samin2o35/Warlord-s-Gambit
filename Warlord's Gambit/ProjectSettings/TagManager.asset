@@ -6,7 +6,7 @@ TagManager:
   tags:
   - AI
   - Enemy
-  - Starting Platform
+  - StartingPlatform
   layers:
   - Default
   - TransparentFX
