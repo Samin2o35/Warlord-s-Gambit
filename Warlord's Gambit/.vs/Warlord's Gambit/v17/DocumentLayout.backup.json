@@ -1,10 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\",
+  "WorkspaceRootPath": "G:\\SAMIN Project Distribution\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\SAMIN Project Distribution\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\playermovementstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovementstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|g:\\samin project distribution\\gitprojects\\warlord-s-gambit\\warlord\u0027s gambit\\assets\\scripts\\i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\SAMIN Project Distribution\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|G:\\SAMIN Project Distribution\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\assets\\scripts\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5F12532-D0EC-1014-FAA9-746B06E7EE9F}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,20 +26,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GameManager.cs",
-              "DocumentMoniker": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\GameManager.cs",
-              "RelativeDocumentMoniker": "Assets\\GameManager.cs",
-              "ToolTip": "G:\\Samin\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\GameManager.cs",
-              "RelativeToolTip": "Assets\\GameManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABbAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "i.cs",
+              "DocumentMoniker": "G:\\SAMIN Project Distribution\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\i.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\i.cs",
+              "ToolTip": "G:\\SAMIN Project Distribution\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\i.cs",
+              "RelativeToolTip": "Assets\\Scripts\\i.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T06:05:25.526Z",
+              "WhenOpened": "2025-05-25T11:08:36.424Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerMovementStats.cs",
+              "DocumentMoniker": "G:\\SAMIN Project Distribution\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\PlayerMovementStats.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovementStats.cs",
+              "ToolTip": "G:\\SAMIN Project Distribution\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\PlayerMovementStats.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovementStats.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T08:05:59.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InputManager.cs",
+              "DocumentMoniker": "G:\\SAMIN Project Distribution\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\InputManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\InputManager.cs",
+              "ToolTip": "G:\\SAMIN Project Distribution\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\InputManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\InputManager.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T06:24:01.648Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "G:\\SAMIN Project Distribution\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovement.cs",
+              "ToolTip": "G:\\SAMIN Project Distribution\\GitProjects\\Warlord-s-Gambit\\Warlord\u0027s Gambit\\Assets\\Scripts\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T05:09:23.833Z"
             }
           ]
         }
