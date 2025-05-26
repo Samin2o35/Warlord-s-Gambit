@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
-    public InputManager moveStats;
+    public PlayerMovementStats moveStats;
     [SerializeField] private Collider2D _feetColl;
     [SerializeField] private Collider2D _bodyColl;
 
@@ -27,6 +27,20 @@ public class PlayerMovement : MonoBehaviour
     {
         _isFacingRight = true;
         _rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        CollisionChecks();
+
+        if(_isGrounded)
+        {
+            Move(moveStats.GroundAcceleration, moveStats.GroundDeceleration, InputManager.movement);
+        }
+        else
+        {
+            Move(moveStats.AirAcceleration, moveStats.AirDeceleration, InputManager.movement);
+        }
     }
 
     private void Move(float acceleration, float deceleration, Vector2 moveInput)
@@ -96,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
             _isGrounded = false;
         }
 
-        //if(moveStats.DebugShowIsGroundedBox)
+        //(moveStats.DebugShowIsGroundedBox)
         {
             Color rayColor;
             if (_isGrounded)
@@ -107,6 +121,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 rayColor = Color.red;
             }
+
+            Debug.DrawRay(new Vector2(boxCastOrigin.x - boxCastSize.x / 2, boxCastOrigin.y), Vector2.down * moveStats.GroundDetectionRayLength, rayColor);
+            Debug.DrawRay(new Vector2(boxCastOrigin.x + boxCastSize.x / 2, boxCastOrigin.y), Vector2.down * moveStats.GroundDetectionRayLength, rayColor);
+            Debug.DrawRay(new Vector2(boxCastOrigin.x - boxCastSize.x / 2, boxCastOrigin.y - moveStats.GroundDetectionRayLength), Vector2.right * boxCastSize.x, rayColor);
         }
+    }
+
+    private void CollisionChecks()
+    {
+        IsGrounded();
     }
 }
